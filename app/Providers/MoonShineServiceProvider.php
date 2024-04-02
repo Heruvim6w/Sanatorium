@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\MoonShine\Resources\AdResource;
 use App\MoonShine\Resources\ArticleResource;
 use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\DocumentResource;
+use App\MoonShine\Resources\UserResource;
 use MoonShine\MoonShineRequest as Request;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
@@ -48,6 +50,12 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Категории', new CategoryResource())
                     ->icon('heroicons.outline.folder')
             ])->icon('heroicons.academic-cap'),
+
+            MenuItem::make('Документы', new DocumentResource())
+                ->icon('heroicons.outline.document-text'),
+
+            MenuItem::make('Пользователи', new UserResource())
+                ->icon('heroicons.outline.users'),
         ];
     }
 
