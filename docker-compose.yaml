@@ -1,0 +1,27 @@
+version: "3"
+services:
+  sanatorium:
+    container_name: sanatorium
+    restart: always
+    build: ./docker/php
+    volumes:
+      - ./xhprof:/php/xhprof/data
+      - ./:/var/www/html/sanatorium
+    environment:
+      - VIRTUAL_HOST=sanatorium.local
+      - VIRTUAL_PROTO=fastcgi
+      - VIRTUAL_PORT=9000
+      - VIRTUAL_ROOT=/var/www/html/sanatorium/public
+    working_dir: /var/www/html/sanatorium
+    ports:
+      - "3070:3079"
+      - "3071:3072"
+    extra_hosts:
+      - "sanatorium.local:172.17.0.1"
+    networks:
+      - devserver_default
+volumes:
+  nginx:
+networks:
+  devserver_default:
+    external: true
