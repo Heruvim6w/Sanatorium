@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 });
 
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -37,6 +38,5 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])
     ->name('categories.show');
 
 Route::resource('posts', ArticleController::class)->only(['index', 'show']);
-Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 
 require __DIR__.'/auth.php';
