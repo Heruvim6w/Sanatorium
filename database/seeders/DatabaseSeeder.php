@@ -26,5 +26,15 @@ class DatabaseSeeder extends Seeder
              'image' => fake()->imageUrl(640, 480),
              'slug' => 'ads',
          ]);
+
+         Category::factory()->create([
+             'title' => 'Общие собрания',
+             'slug' => 'general_meetings',
+         ]);
+
+         Category::factory()->create([
+             'title' => 'Садоводам СНТ',
+             'slug' => 'for_gardeners',
+         ]);
     }
 }

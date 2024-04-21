@@ -24,6 +24,14 @@ class Article extends Model
 {
     use HasFactory;
 
+    public const NEWS = 1;
+
+    public const ADS = 2;
+
+    public const MEETING = 3;
+
+    public const FOR_GARDENERS = 4;
+
     public function getRouteKeyName(): string
     {
         return 'slug';

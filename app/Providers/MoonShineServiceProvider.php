@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Models\Category;
-use App\MoonShine\Resources\AdResource;
+use App\MoonShine\Resources\AdsResource;
 use App\MoonShine\Resources\ArticleResource;
 use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\DocumentResource;
+use App\MoonShine\Resources\GardenersResource;
+use App\MoonShine\Resources\MeetingResource;
+use App\MoonShine\Resources\NewsResource;
 use App\MoonShine\Resources\UserResource;
-use MoonShine\MoonShineRequest as Request;
+use MoonShine\Menu\MenuDivider;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
-use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
 use MoonShine\Resources\MoonShineUserResource;
@@ -45,8 +46,25 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ]),
 
             MenuGroup::make('Статьи', [
-                MenuItem::make('Статьи', new ArticleResource())
+                MenuItem::make('Все статьи', new ArticleResource())
                     ->icon('heroicons.outline.academic-cap'),
+
+                MenuDivider::make(),
+
+                MenuItem::make('Новости', new NewsResource())
+                    ->icon('heroicons.outline.newspaper'),
+
+                MenuItem::make('Объявления', new AdsResource())
+                    ->icon('heroicons.outline.squares-2x2'),
+
+                MenuItem::make('Общие собрания', new MeetingResource())
+                    ->icon('heroicons.outline.chat-bubble-bottom-center-text'),
+
+                MenuItem::make('Садоводам СНТ', new GardenersResource())
+                    ->icon('heroicons.outline.user'),
+
+                MenuDivider::make(),
+
                 MenuItem::make('Категории', new CategoryResource())
                     ->icon('heroicons.outline.folder')
             ])->icon('heroicons.academic-cap'),

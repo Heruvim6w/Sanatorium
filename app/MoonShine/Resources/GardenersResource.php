@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 use App\Models\Category;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Article;
 
@@ -14,9 +15,15 @@ use MoonShine\Resources\ModelResource;
 /**
  * @extends ModelResource<Article>
  */
-class ArticleResource extends AbstractArticleResource
+class GardenersResource extends AbstractArticleResource
 {
-    protected string $title = 'Все статьи';
+    protected string $title = 'Садоводам СНТ';
+
+    public function query(): Builder
+    {
+        return parent::query()
+            ->where('category_id', Article::FOR_GARDENERS);
+    }
 
     public function fields(): array
     {
@@ -29,7 +36,9 @@ class ArticleResource extends AbstractArticleResource
                         ->pluck('title', 'id')
                         ->toArray()
                 )
-                ->required(),
+                ->required()
+                ->default(Article::FOR_GARDENERS)
+                ->disabled(),
         ]);
     }
 
@@ -40,13 +49,6 @@ class ArticleResource extends AbstractArticleResource
 
     public function filters(): array
     {
-        return [
-            Select::make('Категория', 'category_id')
-                ->options(
-                    Category::all()
-                        ->pluck('title', 'id')
-                        ->toArray()
-                ),
-        ];
+        return [];
     }
 }

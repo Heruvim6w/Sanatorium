@@ -29,9 +29,4 @@ class Category extends Model
     {
         return $this->hasMany(Article::class);
     }
-
-    public function ads(): HasMany
-    {
-        return $this->hasMany(Ad::class);
-    }
 }
