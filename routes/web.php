@@ -37,6 +37,6 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])
     ->middleware('auth.categories')
     ->name('categories.show');
 
-Route::resource('posts', ArticleController::class)->only(['index', 'show']);
+Route::resource('articles', ArticleController::class)->only(['show'])->middleware('auth.categories');
 
 require __DIR__.'/auth.php';

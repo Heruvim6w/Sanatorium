@@ -25,6 +25,16 @@ class RedirectUnauthorizedCategoryAccess
             }
         }
 
+        $article = $request->route('article');
+        if (
+            $article
+            && ($article->category->slug === 'general_meetings' || $article->category->slug === 'for_gardeners')
+        ) {
+            if (!auth()->check()) {
+                return redirect()->route('login');
+            }
+        }
+
         return $next($request);
     }
 }
