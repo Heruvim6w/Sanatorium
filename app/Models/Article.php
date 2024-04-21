@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,6 +25,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    public const PUBLISHED = 1;
+
     public const NEWS = 1;
 
     public const ADS = 2;
@@ -35,6 +38,13 @@ class Article extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope('published', static function (Builder $builder) {
+            $builder->where('is_published', self::PUBLISHED);
+        });
     }
 
     protected $fillable = [

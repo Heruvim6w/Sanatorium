@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index(): View|Application|Factory
     {
-        $articles = Article::isPublished()->get();
+        $articles = Article::all();
 
         return view('articles.index', compact('articles'));
     }
