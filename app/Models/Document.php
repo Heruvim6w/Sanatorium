@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 /**
  * @property int $id
  * @property string $title
- * @property string $path
+ * @property string $file
  * @property string $slug
  * @property Carbon $created_at
  * @property Carbon $updated_at
