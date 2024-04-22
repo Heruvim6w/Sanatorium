@@ -7,9 +7,6 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
         <!--
         Template 2085 Neuron
         http://www.tooplate.com/view/2085-neuron
@@ -37,14 +34,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('categories.show', 'news') }}">Новости</a></li>
                     <li><a href="{{ route('categories.show', 'ads') }}">Объявления</a></li>
-                    <li><a href="{{ route('categories.show', 'meetings') }}">Общие собрания</a></li>
+                    <li><a href="{{ route('categories.show', 'general_meetings') }}">Общие собрания</a></li>
                     <li><a href="{{ route('categories.show', 'for_gardeners') }}">Садоводам СНТ</a></li>
+                    <li><a href="{{ route('documents.index') }}">Документы</a></li>
                     @auth
-                        <li>
-                            <a href="{{ route('profile.edit') }}">
-                                {{ __('Профиль') }}
-                            </a>
-                        </li>
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -58,9 +51,6 @@
                         </li>
                     @else
                         <li><a href="{{ route('login') }}">Войти</a></li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}">Регистрация</a></li>
-                        @endif
                     @endauth
                 </ul>
             </div>
