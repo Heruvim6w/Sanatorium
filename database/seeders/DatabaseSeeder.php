@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\About;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 
@@ -15,14 +16,14 @@ class DatabaseSeeder extends Seeder
     {
          Category::factory()->create([
              'title' => 'Новости',
-             'description' => 'Новости из жизни нашего санатория',
+             'description' => 'Новости из жизни нашего СНТ',
              'image' => fake()->imageUrl(640, 480),
              'slug' => 'news',
          ]);
 
          Category::factory()->create([
              'title' => 'Объявления',
-             'description' => 'Объявления нашего санатория',
+             'description' => 'Объявления нашего СНТ',
              'image' => fake()->imageUrl(640, 480),
              'slug' => 'ads',
          ]);
@@ -36,5 +37,7 @@ class DatabaseSeeder extends Seeder
              'title' => 'Садоводам СНТ',
              'slug' => 'for_gardeners',
          ]);
+
+         About::factory()->create();
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = Category::all();
+
+    return view('index', compact('categories'));
 });
 
 Route::get('/dashboard', function () {
@@ -29,8 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 });
+Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
+Route::get('documents/download/{document}', [DocumentController::class, 'download'])->name('documents.download');
 
 Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('categories/{category}', [CategoryController::class, 'show'])
@@ -38,5 +43,7 @@ Route::get('categories/{category}', [CategoryController::class, 'show'])
     ->name('categories.show');
 
 Route::resource('articles', ArticleController::class)->only(['show'])->middleware('auth.categories');
+
+Route::get('about_us', [AboutController::class, 'show'])->name('about_us');
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\AboutResource;
 use App\MoonShine\Resources\AdsResource;
 use App\MoonShine\Resources\ArticleResource;
 use App\MoonShine\Resources\CategoryResource;
@@ -71,6 +72,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 
             MenuItem::make('Документы', new DocumentResource())
                 ->icon('heroicons.outline.document-text'),
+
+            MenuItem::make('О нас', new AboutResource())
+                ->icon('heroicons.outline.user-group'),
 
             MenuItem::make('Пользователи', new UserResource())
                 ->icon('heroicons.outline.users'),
