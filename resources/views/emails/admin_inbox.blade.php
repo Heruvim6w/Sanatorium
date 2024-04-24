@@ -26,9 +26,9 @@
                                         <p style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 1.5em;margin-top: 0;text-align: left;">
                                             На сайте Sanatorium новый пользователь
                                         </p>
-                                        <p>Его имя {$user->name}</p>
-                                        <p>Его почта {$user->email}</p>
-                                        <p>Его id {$user->id}</p>
+                                        <p>Его имя {{ $user->name}}</p>
+                                        <p>Его почта {{ $user->email }}</p>
+                                        <p>Его id {{ $user->id }}</p>
                                         <p style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 1.5em;margin-top: 0;text-align: left;">
                                             Вам нужно одобрить регистрацию, чтобы он мог пользоваться всеми возможностями сайта</p>
                                         <p style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 1.5em;margin-top: 0;text-align: left;">

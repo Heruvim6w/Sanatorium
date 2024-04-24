@@ -24,6 +24,10 @@
                     <h2>СНТ "НЕФТЯНИК"</h2>
                 </a>
             </div>
+            <div style="text-align: center">
+                <h5>Для доступа к закрытым разделам сайта необходима авторизация</h5>
+                <span>После регистрации вам нужно дождаться подтверждения от администрации, после чего вы сможете авторизоваться</span>
+            </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}

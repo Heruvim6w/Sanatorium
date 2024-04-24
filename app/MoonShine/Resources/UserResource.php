@@ -42,7 +42,7 @@ class UserResource extends ModelResource
                 PasswordRepeat::make('Подтверждение пароля', 'password_repeat')
                     ->required()
                     ->hideOnIndex(),
-                Switcher::make('Активирован', 'is_active')
+                Switcher::make('Заблокирован', 'is_blocked')
                     ->sortable(),
             ]),
         ];
