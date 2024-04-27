@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'phone' => ['required', 'string', 'regex:/^\+7[0-9]{10}$/', 'exists:users,phone'],
             'password' => ['required', 'string'],
         ];
     }
@@ -42,19 +42,19 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $is_bocked = User::query()->where('email', $this->input('email'))->first('is_blocked');
+        $user = User::query()->where('phone', $this->input('phone'))->first('is_blocked');
 
-        if ($is_bocked) {
+        if ($user->is_blocked == 1) {
             throw ValidationException::withMessages([
-                'email' => trans('auth_blocked'),
+                'phone' => trans('auth_blocked'),
             ]);
         }
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (! Auth::attempt($this->only('phone', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth_failed'),
+                'phone' => trans('auth_failed'),
             ]);
         }
 
@@ -77,7 +77,7 @@ class LoginRequest extends FormRequest
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'email' => trans('auth.throttle', [
+            'phone' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -89,6 +89,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('phone')).'|'.$this->ip());
     }
 }

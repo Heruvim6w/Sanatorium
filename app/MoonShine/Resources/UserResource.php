@@ -10,6 +10,7 @@ use App\Models\User;
 use MoonShine\Fields\Email;
 use MoonShine\Fields\Password;
 use MoonShine\Fields\PasswordRepeat;
+use MoonShine\Fields\Phone;
 use MoonShine\Fields\Switcher;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
@@ -25,23 +26,32 @@ class UserResource extends ModelResource
 
     protected string $title = 'Users';
 
+    public function search(): array
+    {
+        return ['last_name', 'phone', 'email'];
+    }
+
     public function fields(): array
     {
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Имя', 'name')
+                Text::make('Имя', 'first_name')
                     ->required()
+                    ->sortable(),
+                Text::make('Отчество', 'second_name')
+                    ->required()
+                    ->sortable(),
+                Text::make('Фамилия', 'last_name')
+                    ->required()
+                    ->sortable(),
+                Phone::make('Телефон', 'phone')
+                    ->required()
+                    ->mask('+79999999999')
                     ->sortable(),
                 Email::make('Email', 'email')
                     ->required()
                     ->sortable(),
-                Password::make('Пароль', 'password')
-                    ->required()
-                    ->hideOnIndex(),
-                PasswordRepeat::make('Подтверждение пароля', 'password_repeat')
-                    ->required()
-                    ->hideOnIndex(),
                 Switcher::make('Заблокирован', 'is_blocked')
                     ->sortable(),
             ]),
