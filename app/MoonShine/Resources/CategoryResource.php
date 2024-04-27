@@ -24,6 +24,11 @@ class CategoryResource extends ModelResource
 
     protected string $title = 'Категории';
 
+    public function search(): array
+    {
+        return ['id', 'title', 'slug'];
+    }
+
     public function fields(): array
     {
         return [

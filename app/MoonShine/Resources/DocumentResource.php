@@ -23,6 +23,11 @@ class DocumentResource extends ModelResource
 
     protected string $title = 'Documents';
 
+    public function search(): array
+    {
+        return ['id', 'title', 'slug'];
+    }
+
     public function fields(): array
     {
         return [

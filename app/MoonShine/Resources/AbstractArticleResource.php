@@ -25,6 +25,11 @@ abstract class AbstractArticleResource extends ModelResource
 
     protected string $title = 'Статьи';
 
+    public function search(): array
+    {
+        return ['id', 'title', 'slug'];
+    }
+
     public function fields(): array
     {
         return [
