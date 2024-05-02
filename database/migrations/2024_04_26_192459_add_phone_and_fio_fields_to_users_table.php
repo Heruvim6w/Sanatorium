@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'first_name');
-            $table->string('second_name')->nullable()->after('name');
-            $table->string('last_name')->after('name');
+        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('second_name')->nullable()->after('first_name');
+            $table->string('last_name')->after('first_name');
             $table->string('phone')->after('email')->unique();
         });
     }
