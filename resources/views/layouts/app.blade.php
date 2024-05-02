@@ -69,7 +69,7 @@
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
                         labore et dolore magna aliquyam erat, sed diam voluptua.</p>
                     <div class="footer-copyright">
-                        <p>Copyright &copy; {{ now()->year }} сайт создан c ❤️ Qualmii, дизайн:
+                        <p>Copyright &copy; {{ now()->year }} сайт создан c ❤️ <a href="https://t.me/qualmii">Qualmii</a>, дизайн:
                             <a href="ttp://www.tooplate.com/view/2085-neuron" target="_blank">Neuron</a>
                         </p>
                     </div>
