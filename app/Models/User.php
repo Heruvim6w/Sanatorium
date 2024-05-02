@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
@@ -72,24 +73,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    protected static function booted(): void
-    {
-        static::creating(static function (User $user) {
-            $user->setFioAttribute();
-        });
-
-        static::updating(static function (User $user) {
-            $user->setFioAttribute();
-        });
-    }
-
     public function getNameAttribute(): string
     {
+        $this->setNameAttribute();
         return $this->fio;
     }
 
-    public function setFioAttribute(): void
+    public function setNameAttribute(): void
     {
         $this->fio = trim(trim($this->last_name . ' ' . $this->first_name) . ' ' . $this->second_name);
+    }
+
+    public function sections(): BelongsToMany
+    {
+        return $this->belongsToMany(Section::class);
     }
 }

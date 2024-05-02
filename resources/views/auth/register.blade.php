@@ -26,8 +26,15 @@
         <!-- Phone -->
         <div class="mt-4">
             <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="tel" pattern="^\+7[0-9]{10}$" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="+79876543210"/>
+            <x-text-input id="phone" class="block mt-1 w-full" type="tel" pattern="^\+7[0-9]{10}$" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="+79876543210" oninput="this.value = this.value.replace(/[^0-9+]|(?<=^.)\+/g, '');" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+        </div>
+
+        <!-- Section -->
+        <div class="mt-4">
+            <x-input-label for="section" :value="__('Section')" />
+            <x-text-input id="section" class="block mt-1 w-full" type="number" size="3" min="1" max="999" step="1" name="section" :value="old('section')" required autocomplete="section" placeholder="798" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+            <x-input-error :messages="$errors->get('section')" class="mt-2" />
         </div>
 
         <!-- Email Address -->

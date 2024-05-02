@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Section;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -35,6 +36,7 @@ class RegisteredUserController extends Controller
             'second_name' => ['string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'regex:/^\+7[0-9]{10}$/', 'max:12', 'unique:'.User::class],
+            'section' => ['required', 'integer', 'min:1', 'max:999'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -47,6 +49,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $section = Section::query()->createOrFirst(['section' => $request->section]);
+
+        $user->sections()->attach($section);
 
         event(new Registered($user));
 

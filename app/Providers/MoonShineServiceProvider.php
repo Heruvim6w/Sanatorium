@@ -12,6 +12,7 @@ use App\MoonShine\Resources\DocumentResource;
 use App\MoonShine\Resources\GardenersResource;
 use App\MoonShine\Resources\MeetingResource;
 use App\MoonShine\Resources\NewsResource;
+use App\MoonShine\Resources\SectionResource;
 use App\MoonShine\Resources\UserResource;
 use MoonShine\Menu\MenuDivider;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -74,10 +75,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ->icon('heroicons.outline.document-text'),
 
             MenuItem::make('О нас', new AboutResource())
-                ->icon('heroicons.outline.user-group'),
+                ->icon('heroicons.outline.pencil'),
 
-            MenuItem::make('Пользователи', new UserResource())
-                ->icon('heroicons.outline.users'),
+            MenuGroup::make('Участники', [
+                MenuItem::make('Пользователи', new UserResource())
+                    ->icon('heroicons.outline.users'),
+                MenuItem::make('Участки', new SectionResource())
+                    ->icon('heroicons.outline.home-modern'),
+            ])
+            ->icon('heroicons.outline.user-group'),
         ];
     }
 
