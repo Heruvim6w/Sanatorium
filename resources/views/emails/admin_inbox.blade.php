@@ -24,7 +24,7 @@
                                         <h1 style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color: #3d4852;font-size: 18px;font-weight: bold;margin-top: 0;text-align: left;">
                                             Привет!</h1>
                                         <p style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 1.5em;margin-top: 0;text-align: left;">
-                                            На сайте Sanatorium новый пользователь
+                                            На сайте СНТ "НЕФТЯНИК" новый пользователь
                                         </p>
                                         <p>Его имя {{ $user->name}}</p>
                                         <p>Его почта {{ $user->email }}</p>
@@ -35,7 +35,7 @@
                                             Для этого войдите в админ панель сайта и в разделе "Пользователи" найдите этого пользователя</p>
                                         <p style="box-sizing: border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 1.5em;margin-top: 0;text-align: left;">
                                             С уважением,<br>
-                                            Sanatorium</p>
+                                            СНТ "НЕФТЯНИК"</p>
                                     </td>
                                 </tr>
                                 </tbody>
