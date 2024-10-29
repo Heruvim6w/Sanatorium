@@ -22,13 +22,18 @@
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
 
-            <div class="navbar-header">
+            <div class="navbar-header container-fluid">
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">СНТ "Нефтяник"</a>
+                <a href="/">
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="navbar-brand-image img-fluid" width="75" height="68">
+                </a>
+                <a href="/" class="navbar-brand">
+                    СНТ "Нефтяник"
+                </a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -65,21 +70,32 @@
             <div class="row">
 
                 <div class="col-md-5 col-md-offset-1 col-sm-6">
-                    <h3>СНТ "НЕФТЯНИК"</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                        labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    <h3>СНТ "НЕФТЯНИК" г. Рязань</h3>
+                    <p>График работы дома правления:</p>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <p>Сезон<br>(с 1 мая по 30 сентября)</p>
+                            <p>ЧТ с 17:30 до 20:00</p>
+                            <p>СБ с 12:00 до 14:00</p>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <p>Вне сезона<br>(с 1 октября по 30 апреля)</p>
+                            <p>СБ с 12:00 до 14:00</p>
+                        </div>
+                    </div>
+                    <p>Воскресенье и понедельник выходные</p>
                     <div class="footer-copyright">
                         <p>Copyright &copy; {{ now()->year }} сайт создан c ❤️ <a href="https://t.me/qualmii">Qualmii</a>, дизайн:
-                            <a href="ttp://www.tooplate.com/view/2085-neuron" target="_blank">Neuron</a>
+                            <a href="http://www.tooplate.com/view/2085-neuron" target="_blank">Neuron</a>
                         </p>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-md-offset-1 col-sm-6">
                     <h3>Контакты</h3>
-                    <p><i class="fa fa-globe"></i> Рязанская обл.</p>
-                    <p><i class="fa fa-phone"></i> 010-020-0990</p>
-                    <p><i class="fa fa-save"></i> info@company.com</p>
+                    <p><i class="fa fa-globe"></i> Рязанская обл., г. Рязань, р-н Сысоево, д. 7 С/Т НЕФТЯНИК</p>
+                    <p><i class="fa fa-phone"></i> Тел.для справок: +7(900)607-84-72</p>
+                    <p><i class="fa fa-save"></i> snt_neftyanik@mail.ru</p>
                 </div>
             </div>
         </div>

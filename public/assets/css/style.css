@@ -263,6 +263,17 @@ a:hover, a:active, a:focus {
     background-color: transparent;
 }
 
+.navbar-brand-image {
+    width: 5em;
+    height: auto;
+    margin-right: 10px;
+    float: left;
+    margin-left: -80px;
+}
+
+.img-fluid {
+    max-width: 100%;
+}
 
 /*---------------------------------------
     Home section
@@ -739,6 +750,10 @@ footer .footer-copyright {
 
 
 @media (max-width: 768px) {
+
+    .navbar-brand-image {
+        display: none;
+    }
 
     h1 {
         font-size: 52px;

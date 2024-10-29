@@ -8,7 +8,7 @@
             <div class="row">
 
                 <div class="col-md-12 col-sm-12">
-                    <h1>СНТ "НЕФТЯНИК"</h1>
+                    <h1>СНТ "НЕФТЯНИК" г. Рязань</h1>
                     <h2 style="color: #f00">САЙТ РАБОТАЕТ В ТЕСТОВОМ РЕЖИМЕ</h2>
                     <h4>Добро пожаловать!</h4>
                     <a href="{{ route('about_us') }}" class="smoothScroll btn btn-default">Подробнее</a>
