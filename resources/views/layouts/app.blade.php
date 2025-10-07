@@ -94,8 +94,16 @@
                 <div class="col-md-4 col-md-offset-1 col-sm-6">
                     <h3>Контакты</h3>
                     <p><i class="fa fa-globe"></i> Рязанская обл., г. Рязань, р-н Сысоево, д. 7 С/Т НЕФТЯНИК</p>
-                    <p><i class="fa fa-phone"></i> Тел.для справок: +7(900)607-84-72</p>
+                    <p><i class="fa fa-phone"></i> Тел.: +7(4912)29-50-92</p>
                     <p><i class="fa fa-save"></i> snt_neftyanik@mail.ru</p>
+                    <p>
+                        <img src="{{ asset('assets/images/telegram-brands-solid-full.svg') }}" alt="" style="width: 2rem">
+                        Telegram: <a href="https://t.me/+79006078472">+7(900)607-84-72 (только текстовые сообщения)</a>
+                    </p>
+                    <p>
+                        <img src="{{ asset('assets/images/telegram-brands-solid-full.svg') }}" alt="" style="width: 2rem">
+                        Группа Telegram: <a href="https://t.me/sntneftyanik62">t.me/sntneftyanik62 (ссылка-приглашение)</a>
+                    </p>
                 </div>
             </div>
         </div>
