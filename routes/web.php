@@ -47,4 +47,8 @@ Route::resource('articles', ArticleController::class)->only(['show'])->middlewar
 
 Route::get('about_us', [AboutController::class, 'show'])->name('about_us');
 
+Route::get('agreement', static function () {
+    return view('agreement');
+})->name('agreement');
+
 require __DIR__.'/auth.php';
