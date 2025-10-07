@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index(): View|Application|Factory
     {
-        $articles = Article::all();
+        $articles = Article::all()->sortBy('published_at', 'desc');
 
         return view('articles.index', compact('articles'));
     }
