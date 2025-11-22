@@ -1,0 +1,60 @@
+name: Run PHPUnit Tests
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v3
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, curl, sqlite, pdo_sqlite
+          ini-values: post_max_size=256M, memory_limit=2G
+
+      - name: Get Composer cache
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: ~./composer/cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env || true
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate --ansi || true
+        env:
+          APP_ENV: testing
+
+      - name: Run Unit tests (sqlite in-memory)
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: |
+          ./vendor/bin/phpunit --testsuite=Unit --colors=always
+
+      - name: Run all tests
+        if: ${{ always() }}
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: |
+          ./vendor/bin/phpunit --colors=always
+

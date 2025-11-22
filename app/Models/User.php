@@ -75,13 +75,17 @@ class User extends Authenticatable
 
     public function getNameAttribute(): string
     {
-        $this->setNameAttribute();
-        return $this->fio;
-    }
+        // если в БД есть поля first_name/last_name — собираем fio
+        $first = $this->attributes['first_name'] ?? null;
+        $last = $this->attributes['last_name'] ?? null;
+        $second = $this->attributes['second_name'] ?? null;
 
-    public function setNameAttribute(): void
-    {
-        $this->fio = trim(trim($this->last_name . ' ' . $this->first_name) . ' ' . $this->second_name);
+        if ($first || $last || $second) {
+            return trim(trim(($last ?? '') . ' ' . ($first ?? '')) . ' ' . ($second ?? ''));
+        }
+
+        // fallback — возвращаем обычное поле name (существует в миграции)
+        return $this->attributes['name'] ?? '';
     }
 
     public function sections(): BelongsToMany
