@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index(): View|Application|Factory
     {
-        $categories = Category::all();
+        $categories = Category::with('articles')->get();
 
         return view('categories.index', compact('categories'));
     }
@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category): View|Application|Factory
     {
-        $category->load('articles');
+        $category->load(['articles' => fn($q) => $q->orderBy('published_at', 'desc')]);
 
         return view('categories.show', compact('category'));
     }

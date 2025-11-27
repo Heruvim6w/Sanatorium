@@ -23,7 +23,7 @@
 
                             <div class="blog-post-format">
                                 <span>
-                                    <i class="fa fa-date"></i> {{ $article->created_at->translatedFormat('j F Y') }}
+                                    <i class="fa fa-date"></i> {{ $article->published_at->translatedFormat('j F Y H:i') }}
                                 </span>
                             </div>
 

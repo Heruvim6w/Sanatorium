@@ -7,6 +7,8 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Article;
 
+use Illuminate\Support\Carbon;
+use MoonShine\Fields\Date;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Switcher;
@@ -46,6 +48,10 @@ abstract class AbstractArticleResource extends ModelResource
                 Image::make('Изображение', 'image')
                     ->hideOnIndex(),
                 Switcher::make('Опубликовано', 'is_published'),
+                Date::make('Дата публикации', 'published_at')
+                    ->withTime()
+                    ->hideOnIndex()
+                    ->required(),
                 Slug::make('Ссылка', 'slug')
                     ->unique()
                     ->from('title')
