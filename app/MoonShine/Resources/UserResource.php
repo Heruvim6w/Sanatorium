@@ -57,7 +57,7 @@ class UserResource extends ModelResource
                     ->sortable(),
                 Switcher::make('Заблокирован', 'is_blocked')
                     ->sortable(),
-                BelongsToMany::make('Участок', 'sections', resource: new SectionResource())
+                BelongsToMany::make('Участок', 'sections', formatted: 'section', resource: new SectionResource())
                     ->selectMode()
                     ->placeholder('Кликните и начните ввод для поиска')
                     ->inLine(badge: true),
