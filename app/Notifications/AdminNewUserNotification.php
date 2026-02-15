@@ -36,7 +36,7 @@ class AdminNewUserNotification extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Новый пользователь на сайте')
             ->line('Зарегистрирован новый пользователь: ' . ($user->email ?? '---'))
-            ->action('Открыть профиль', url('/admin/users/' . ($user->id ?? '')))
+            ->action('Открыть профиль', url(config('app.url') . '/admin/users/' . ($user->id ?? '')))
             ->line('');
     }
 }
