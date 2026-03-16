@@ -94,7 +94,7 @@
                 <div class="col-md-4 col-md-offset-1 col-sm-6">
                     <h3>Контакты</h3>
                     <p><i class="fa fa-globe"></i> Рязанская обл., г. Рязань, р-н Сысоево, д. 7 С/Т НЕФТЯНИК</p>
-                    <p><i class="fa fa-phone"></i> Тел.: +7(4912)29-50-92</p>
+                    <p><i class="fa fa-phone"></i> Тел.: +7(4912)97-50-92</p>
                     <p><i class="fa fa-save"></i> snt_neftyanik@mail.ru</p>
                     <p>
                         <img src="{{ asset('assets/images/telegram-brands-solid-full.svg') }}" alt="" style="width: 2rem">
